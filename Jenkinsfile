@@ -27,7 +27,7 @@ pipeline{
                   agent any  
                 steps{
                     git 'https://github.com/ashudevopss/DevOpsClassCodes.git'
-                    bat 'mvn test'
+                    sh 'mvn test'
                 }
                 post{
                     always{
