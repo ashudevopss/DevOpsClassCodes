@@ -24,7 +24,7 @@ pipeline{
                 }
             }
             stage('unittest'){
-
+                  agent any  
                 steps{
                     git 'https://github.com/ashudevopss/DevOpsClassCodes.git'
                     bat 'mvn test'
