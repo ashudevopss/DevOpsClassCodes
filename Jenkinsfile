@@ -6,13 +6,13 @@ pipeline{
     
     agent none
     stages{
-            stage('Compile'){
+            stage('compile'){
                 agent any
                 steps{
                     sh 'mvn compile'
                 }
             }
-            stage('CodeReview'){
+            stage('codereview'){
                 agent any
                 steps{
                     sh 'mvn pmd:pmd'
@@ -23,7 +23,7 @@ pipeline{
                     }
                 }
             }
-            stage('UnitTest'){
+            stage('unittest'){
                 agent {label 'win_slave'}
                 steps{
                     git 'https://github.com/devops-trainer/DevOpsClassCodes.git'
@@ -36,7 +36,7 @@ pipeline{
                 }
                 
             }
-            stage('MetricCheck'){
+            stage('metriccheck'){
                 agent any
                 steps{
                     sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
@@ -47,7 +47,7 @@ pipeline{
                     }
                 }
             }
-            stage('Package'){
+            stage('package'){
                 agent any
                 steps{
                     sh 'mvn package'
